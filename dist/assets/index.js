@@ -43,7 +43,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       100% { transform: rotate(360deg); }
     }
 
-    .vapi-btn {
+    .fqbot-btn {
       border-radius: 50%;
       min-width: ${n};
       height: ${a};
@@ -59,74 +59,74 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       animation: bounce 2s ease-in-out infinite;
       ${f[s]}
     }
-    .vapi-btn-round {
+    .fqbot-btn-round {
       justify-content: center;
     }
-    .vapi-btn-pill {
+    .fqbot-btn-pill {
       border-radius: 8px;
       color: black;
       background: white;
       justify-content: flex-start;
       padding: 0px 10px;
     }
-    .vapi-btn:hover {
+    .fqbot-btn:hover {
       animation: none;
       transform: translateY(-5px);
     }
-    #vapi-icon-container {
+    #fqbot-icon-container {
       padding: 5px;
       margin: 5px;
       border-radius: 5px;
     }
 
-    #vapi-title-container {
+    #fqbot-title-container {
       padding: 5px 10px;
     }
-    #vapi-title {
+    #fqbot-title {
       font-size: 1.1em;
     }
-    #vapi-subtitle {
+    #fqbot-subtitle {
       font-size: 0.9em;
     }
 
-    .vapi-btn-is-loading > #vapi-icon-container > img {
+    .fqbot-btn-is-loading > #fqbot-icon-container > img {
       animation: spin 1s linear infinite;
     }
 
-    .vapi-btn-is-active {
+    .fqbot-btn-is-active {
       background: ${r.color};
       box-shadow: 1px 1px 80px 20px ${r.color};
     }
-    .vapi-btn-pill.vapi-btn-is-active {
+    .fqbot-btn-pill.fqbot-btn-is-active {
       background: white;
     }
-    .vapi-btn-pill.vapi-btn-is-active > #vapi-icon-container {
+    .fqbot-btn-pill.fqbot-btn-is-active > #fqbot-icon-container {
       background: ${r.color};
     }
 
 
-    .vapi-btn-is-idle {
+    .fqbot-btn-is-idle {
       background: ${e.color};
       box-shadow: 1px 1px 10px ${e.color};
     }
-    .vapi-btn-pill.vapi-btn-is-idle {
+    .fqbot-btn-pill.fqbot-btn-is-idle {
       background: white;
     }
-    .vapi-btn-pill.vapi-btn-is-idle > #vapi-icon-container {
+    .fqbot-btn-pill.fqbot-btn-is-idle > #fqbot-icon-container {
       background: ${e.color};
     }
 
-    .vapi-btn-is-loading {
+    .fqbot-btn-is-loading {
       background: ${t.color};
       box-shadow: 1px 1px 80px 20px ${t.color};
     }
-    .vapi-btn-pill.vapi-btn-is-loading {
+    .fqbot-btn-pill.fqbot-btn-is-loading {
       background: white;
     }
-    .vapi-btn-pill.vapi-btn-is-loading > #vapi-icon-container {
+    .fqbot-btn-pill.fqbot-btn-is-loading > #fqbot-icon-container {
       background: ${t.color};
     }
-    .vapi-btn-is-speaking {
+    .fqbot-btn-is-speaking {
       // Add speaking styles if different from active/loading/idle
     }
     @font-face {
@@ -134,7 +134,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       src: url(https://unpkg.com/lucide-static@latest/font/Lucide.ttf) format('truetype');
     }
   `;for(let y=0;y<=10;y++)m.innerText+=`
-      .vapi-btn-volume-${y} {
+      .fqbot-btn-volume-${y} {
         box-shadow: 1px 1px ${5+y*2}px ${y*2}px ${r.color}, inset 0px 0px 10px 0px rgba(0,0,0,0.1);
       }
-    `;document.head.appendChild(m)},Gd=({position:e="bottom",offset:t="40px",width:r="50px",height:n="50px",idle:a,loading:s,active:c},l="vapi-support-btn")=>{$d({idle:a,loading:s,active:c,width:r,height:n,position:e,offset:t});const d=document.createElement("button");return d.id=l,d.className="vapi-btn vapi-btn-round vapi-btn-is-idle",d.onclick=()=>{},d},$a="https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",Hd=e=>(t,r)=>{const n=e[r];if(n){if(t.className=`vapi-btn vapi-btn-is-${r} ${n.type==="pill"?"vapi-btn-pill":n.type==="round"?"vapi-btn-round":""}`,t.innerHTML="",t.title=n.title??"",n.type==="pill"){const a=document.createElement("div");a.id="vapi-icon-container";const s=document.createElement("img");s.src=n.icon||$a,s.alt="Icon",a.appendChild(s);const c=document.createElement("div");c.id="vapi-title-container";const l=document.createElement("div");l.id="vapi-title",l.textContent=n.title;const d=document.createElement("div");d.id="vapi-subtitle",d.textContent=n.subtitle,c.appendChild(l),c.appendChild(d),t.appendChild(a),t.appendChild(c)}else if(n.type==="round"){const a=document.createElement("div");a.id="vapi-icon-container";const s=document.createElement("img");s.src=n.icon||$a,s.alt="Icon",a.appendChild(s),t.appendChild(a)}}};function Kd(e,t,r,n){let a=!1;const s=()=>{n(t,"loading"),a?(e.stop(),a=!1):(e.start(r),a=!0)};e.on("call-start",()=>{n(t,"active")}),e.on("call-end",()=>{n(t,"idle")}),e.on("speech-start",()=>{t.classList.add("vapi-btn-is-speaking")}),e.on("speech-end",()=>{t.classList.remove("vapi-btn-is-speaking")}),t.addEventListener("click",s),e.on("volume-level",c=>{const l=Math.floor(c*10);for(let d=0;d<=10;d++)t.classList.remove(`vapi-btn-volume-${d}`);t.classList.add(`vapi-btn-volume-${l}`)})}const Qd=({apiKey:e="",assistant:t=Wd(),config:r={}})=>{function n(c,l){const d={...c};return Object.keys(l).forEach(f=>{typeof l[f]=="object"&&l[f]!==null&&!Array.isArray(l[f])?d[f]=n(c[f]||{},l[f]):d[f]=l[f]}),d}const s=n({position:"bottom",offset:"40px",width:"50px",height:"50px",idle:{color:"rgb(93, 254, 202)",type:"round",title:"Have a quick question?",subtitle:"Talk with our AI assistant",icon:"https://unpkg.com/lucide-static@0.321.0/icons/phone.svg"},loading:{color:"rgb(93, 124, 202)",type:"round",title:"Connecting...",subtitle:"Please wait",icon:"https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg"},active:{color:"rgb(255, 0, 0)",type:"round",title:"Call is in progress...",subtitle:"End the call.",icon:"https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg"}},r);if(e&&t){const c=new zd(e),l=Gd(s),d=Hd(s);return document.body.appendChild(l),d(l,"idle"),Kd(c,l,t,d),window.fqbotSDK.vapi=c,c}else return console.error("API Key and Assistant Configurations are required. are required"),null};window.fqbotSDK={run:Qd}});
+    `;document.head.appendChild(m)},Gd=({position:e="bottom",offset:t="40px",width:r="50px",height:n="50px",idle:a,loading:s,active:c},l="fqbot-support-btn")=>{$d({idle:a,loading:s,active:c,width:r,height:n,position:e,offset:t});const d=document.createElement("button");return d.id=l,d.className="fqbot-btn fqbot-btn-round fqbot-btn-is-idle",d.onclick=()=>{},d},$a="https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",Hd=e=>(t,r)=>{const n=e[r];if(n){if(t.className=`fqbot-btn fqbot-btn-is-${r} ${n.type==="pill"?"fqbot-btn-pill":n.type==="round"?"fqbot-btn-round":""}`,t.innerHTML="",t.title=n.title??"",n.type==="pill"){const a=document.createElement("div");a.id="fqbot-icon-container";const s=document.createElement("img");s.src=n.icon||$a,s.alt="Icon",a.appendChild(s);const c=document.createElement("div");c.id="fqbot-title-container";const l=document.createElement("div");l.id="fqbot-title",l.textContent=n.title;const d=document.createElement("div");d.id="fqbot-subtitle",d.textContent=n.subtitle,c.appendChild(l),c.appendChild(d),t.appendChild(a),t.appendChild(c)}else if(n.type==="round"){const a=document.createElement("div");a.id="fqbot-icon-container";const s=document.createElement("img");s.src=n.icon||$a,s.alt="Icon",a.appendChild(s),t.appendChild(a)}}};function Kd(e,t,r,n){let a=!1;const s=()=>{n(t,"loading"),a?(e.stop(),a=!1):(e.start(r),a=!0)};e.on("call-start",()=>{n(t,"active")}),e.on("call-end",()=>{n(t,"idle")}),e.on("speech-start",()=>{t.classList.add("fqbot-btn-is-speaking")}),e.on("speech-end",()=>{t.classList.remove("fqbot-btn-is-speaking")}),t.addEventListener("click",s),e.on("volume-level",c=>{const l=Math.floor(c*10);for(let d=0;d<=10;d++)t.classList.remove(`fqbot-btn-volume-${d}`);t.classList.add(`fqbot-btn-volume-${l}`)})}const Qd=({apiKey:e="",assistant:t=Wd(),config:r={}})=>{function n(c,l){const d={...c};return Object.keys(l).forEach(f=>{typeof l[f]=="object"&&l[f]!==null&&!Array.isArray(l[f])?d[f]=n(c[f]||{},l[f]):d[f]=l[f]}),d}const s=n({position:"bottom",offset:"40px",width:"50px",height:"50px",idle:{color:"rgb(93, 254, 202)",type:"round",title:"Have a quick question?",subtitle:"Talk with our AI assistant",icon:"https://unpkg.com/lucide-static@0.321.0/icons/phone.svg"},loading:{color:"rgb(93, 124, 202)",type:"round",title:"Connecting...",subtitle:"Please wait",icon:"https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg"},active:{color:"rgb(255, 0, 0)",type:"round",title:"Call is in progress...",subtitle:"End the call.",icon:"https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg"}},r);if(e&&t){const c=new zd(e),l=Gd(s),d=Hd(s);return document.body.appendChild(l),d(l,"idle"),Kd(c,l,t,d),window.fqbotSDK.fqbot=c,c}else return console.error("API Key and Assistant Configurations are required. are required"),null};window.fqbotSDK={run:Qd}});
